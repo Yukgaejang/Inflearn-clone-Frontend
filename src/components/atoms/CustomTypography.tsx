@@ -18,9 +18,24 @@ const theme: Theme = createTheme({
             fontWeight: 'bolder'
 
         },
+        sidehead: {
+            fontSize: '0.9rem',
+            color: 'black',
+            fontWeight: 'bolder'
+
+        },
         body: {
             fontSize: '0.975rem',
             color: '#495057'
+        },
+        body2: {
+            fontSize: '0.775rem',
+            color: 'black',
+            fontWeight: 'bolder'
+        },
+        body3: {
+            fontSize: '0.8rem',
+            color: 'black',
         },
         additional: {
             fontSize: '0.8rem',
@@ -31,8 +46,11 @@ const theme: Theme = createTheme({
         MuiTypography: {
             defaultProps: {
                 variantMapping: {
-                    head: "h6", // 게시글 목록에서 타이틀(head)
-                    body: "subtitle1", // 게시글 목록에서 본문글
+                    head: "h5", // 게시글 목록에서 타이틀(head)
+                    sidehead : "h6",
+                    body: "subtitle1",
+                    body2: "subtitle2",
+                    body3: "body",
                     additional: "overline", // 작성자, 시간, 좋아요, 조회수, 댓글수 등 부가 정보
                 },
             },
@@ -43,13 +61,19 @@ const theme: Theme = createTheme({
 declare module "@mui/material/styles" {
     interface TypographyVariants {
         head: React.CSSProperties;
+        sidehead: React.CSSProperties;
         body: React.CSSProperties;
+        body2: React.CSSProperties;
+        body3: React.CSSProperties;
         additional: React.CSSProperties;
     }
 
     interface TypographyVariantsOptions {
         head?: React.CSSProperties;
+        sidehead?: React.CSSProperties;
         body?: React.CSSProperties;
+        body2?: React.CSSProperties;
+        body3?: React.CSSProperties;
         additional?: React.CSSProperties;
     }
 }
@@ -57,13 +81,16 @@ declare module "@mui/material/styles" {
 declare module "@mui/material/Typography" {
     interface TypographyPropsVariantOverrides {
         head: true;
+        sidehead: true;
         body: true;
+        body2: true;
+        body3: true;
         additional: true;
     }
 }
 
 interface CustomTypographyProps {
-    type: 'head' | 'body' | 'additional';
+    type: 'head' | 'body' | 'additional' | 'sidehead' | 'body2' | 'body3';
     body: string;
 }
 

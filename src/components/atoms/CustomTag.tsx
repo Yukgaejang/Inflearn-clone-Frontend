@@ -26,7 +26,7 @@ const CustomTag: React.FC<CustomTagProps> = ({ type, tags }) => {
     return (
         <Stack direction="row" spacing={1}>
             {tags.map((tag, index) => (
-                <Chip key={index} label={tag} style={{background: getChipColor(type)}}/>
+                <Chip key={index} label={tag} style={{background: getChipColor(type), margin: "0 4px 10px 0"}}/>
             ))}
         </Stack>
     );
