@@ -1,3 +1,17 @@
+/* 모달 */
+.modal-box{
+    text-align: center;
+    padding: 38px 64px;
+    max-width: 416px;
+    min-width: 320px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    line-height: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 /* 게시글 사이드 박스 부분 */
 .sidebox { 
     border: 1px solid #dee2e6;

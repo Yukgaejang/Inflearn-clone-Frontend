@@ -1,7 +1,6 @@
 import React from "react";
 import CustomTypography from "./CustomTypography";
 import "../../styles/Board.css";
-import { PhotoSizeSelectLargeTwoTone } from "@mui/icons-material";
 
 interface SideBoxProps {
     head: string;
