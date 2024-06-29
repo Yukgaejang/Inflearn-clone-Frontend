@@ -100,10 +100,24 @@ export const tagButton = css`
     }
 `;
 
+export const MainCategoryButton = css`
+    border: none;
+    background-color: white;
+    font-size: 18px;
+    padding: 5px 12px;
+    border-radius: 5px;
+    display: flex;
+    margin: 20px;
+    
+`;
+
+
 export const buttonType = {
     white: whiteButton,
     green:  greenButton,
     black: blackButton,
     noneBorder: noneBorderButton,
     tag:tagButton,
+    MainCategory: MainCategoryButton,
+
 };
