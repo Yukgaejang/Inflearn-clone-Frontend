@@ -1,0 +1,30 @@
+/* 댓글 관련 */
+.comment-list {
+    margin : 24px 0;
+}
+.comment {
+    padding: 20px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+.down-comment {
+    padding-left: 15px;
+    margin-left: -6px;
+    border-left: 6px solid #e9ecef;
+    margin-top: 20px;
+}
+.comment-user {
+    display: flex;
+    align-items: center;
+}
+.comment-user > img {
+    margin-right: 8px;
+}
+.comment-body {
+    min-width: 48px;
+    margin: 8px 0 16px;
+}
+.footer-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

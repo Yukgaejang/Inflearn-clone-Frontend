@@ -19,7 +19,7 @@ const theme: Theme = createTheme({
 
         },
         sidehead: {
-            fontSize: '0.9rem',
+            fontSize: '0.94rem',
             color: 'black',
             fontWeight: 'bolder'
 
@@ -29,12 +29,16 @@ const theme: Theme = createTheme({
             color: '#495057'
         },
         body2: {
-            fontSize: '0.775rem',
+            fontSize: '0.9rem',
             color: 'black',
             fontWeight: 'bolder'
         },
         body3: {
-            fontSize: '0.8rem',
+            fontSize: '0.9rem',
+            color: 'black',
+        },
+        body4: {
+            fontSize: '0.675rem',
             color: 'black',
         },
         additional: {
@@ -51,6 +55,7 @@ const theme: Theme = createTheme({
                     body: "subtitle1",
                     body2: "subtitle2",
                     body3: "body",
+                    body4: "body2",
                     additional: "overline", // 작성자, 시간, 좋아요, 조회수, 댓글수 등 부가 정보
                 },
             },
@@ -65,6 +70,7 @@ declare module "@mui/material/styles" {
         body: React.CSSProperties;
         body2: React.CSSProperties;
         body3: React.CSSProperties;
+        body4: React.CSSProperties;
         additional: React.CSSProperties;
     }
 
@@ -74,6 +80,7 @@ declare module "@mui/material/styles" {
         body?: React.CSSProperties;
         body2?: React.CSSProperties;
         body3?: React.CSSProperties;
+        body4?: React.CSSProperties;
         additional?: React.CSSProperties;
     }
 }
@@ -85,12 +92,13 @@ declare module "@mui/material/Typography" {
         body: true;
         body2: true;
         body3: true;
+        body4: true;
         additional: true;
     }
 }
 
 interface CustomTypographyProps {
-    type: 'head' | 'body' | 'additional' | 'sidehead' | 'body2' | 'body3';
+    type: 'head' | 'body' | 'additional' | 'sidehead' | 'body2' | 'body3'| 'body4';
     body: string;
 }
 
