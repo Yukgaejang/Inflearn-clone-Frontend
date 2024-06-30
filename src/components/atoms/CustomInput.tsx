@@ -7,10 +7,10 @@ interface CustomInputProps {
 }
 
 const CustomInput: React.FC<CustomInputProps> = ({ type, body }) => {
-    const [inputValue, setInputValue] = useState();
+   const [inputValue, setInputValue] = useState<string | undefined>(undefined);
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setInputValue(e.target.value);
+        setInputValue(e.target.value as SetStateAction<string | undefined>);
     };
 
     const getType = (type: string) => {
