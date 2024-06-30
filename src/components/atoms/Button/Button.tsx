@@ -17,7 +17,7 @@ import {buttonSize, buttonType} from "./ButtonStyles";
 */
 export type ButtonStyleProps = {
     size: "xsmall" | "small" | "medium" | "large" | "auto",
-    buttonType: "white" | "green" | "black" | "noneBorder" | "tag" | "MainCategory",
+    buttonType: "white" | "green" | "black" | "noneBorder" | "tag" | "MainCategory" | "SubCategory",
     onClick?: () => void
 };
 

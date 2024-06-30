@@ -110,7 +110,17 @@ export const MainCategoryButton = css`
     margin: 20px;
     
 `;
+export const SubCategoryButton = css`
+    border: none;
+    background-color: white;
+    font-size: 18px;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-color: #ffffff;
+    font-weight: bold;
+    margin: 5px;
 
+`;
 
 export const buttonType = {
     white: whiteButton,
@@ -119,5 +129,5 @@ export const buttonType = {
     noneBorder: noneBorderButton,
     tag:tagButton,
     MainCategory: MainCategoryButton,
-
+    SubCategory: SubCategoryButton
 };
