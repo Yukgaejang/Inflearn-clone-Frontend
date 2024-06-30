@@ -1,17 +1,14 @@
 version: 0.0
 os: linux
-
 files:
   - source: /
-    destination: /home/ubuntu/deploy-fe
+    destination: /usr/share/nginx/html/
     overwrite: yes
-
 permissions:
-  - object: /home/ubuntu/deploy-fe
-    owner: ubuntu
-    group: ubuntu
+  - object: /usr/share/nginx/html/
+    owner: root
+    group: root
     mode: 755
-
 hooks:
   AfterInstall:
     - location: deploy.sh
