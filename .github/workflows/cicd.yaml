@@ -53,6 +53,9 @@ jobs:
 
       - name: Upload to S3
         run: aws s3 cp --region ap-northeast-2 ./build-fe.zip s3://yukgaejang-bucket/build-fe.zip
+      
+      - name: 이전 배포 삭제
+        run: aws deploy stop-deployment --deployment-id d-1CUWABY26 --region ${{secrets.AWS_REGION}} || echo "No active deployment to stop"
 
       - name: Deploy to CodeDeploy
         run: aws deploy create-deployment --application-name Yukgaejang-inflearn-clone --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name Yukgaejang --s3-location bucket=yukgaejang-bucket,key=build-fe.zip,bundleType=zip
