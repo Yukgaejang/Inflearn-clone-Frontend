@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { buttonSize, buttonType } from "./ButtonStyles";
+import {buttonSize, buttonType} from "./ButtonStyles";
 /*
 ./ButtonStyles 에 각각의 size, buttonType에 적용되는 버튼 작성되어 있음
 
@@ -15,9 +15,10 @@ import { buttonSize, buttonType } from "./ButtonStyles";
          <GoSync/> 초기화
     </Button>
 */
-type ButtonStyleProps = {
-    size: "xsmall" | "small" | "medium" |"large" |"auto" ;
-    buttonType: "white" | "green" | "black" | "noneBorder" | "tag";
+export type ButtonStyleProps = {
+    size: "xsmall" | "small" | "medium" | "large" | "auto",
+    buttonType: "white" | "green" | "black" | "noneBorder" | "tag" | "MainCategory" | "SubCategory",
+    onClick?: () => void
 };
 
 const ButtonStyle = styled.button<ButtonStyleProps>`
@@ -32,7 +33,7 @@ interface ButtonProps extends ButtonStyleProps {
 }
 
 
-const Button = ({ children, ...styleProps }: ButtonProps) => {
+const Button = ({children, ...styleProps}: ButtonProps) => {
     return (
         <ButtonStyle  {...styleProps} >
             {children}
