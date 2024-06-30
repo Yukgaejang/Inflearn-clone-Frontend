@@ -1,20 +1,14 @@
 # Base image
 FROM node:16
+ENV PORT=8080
 
-# Create app directory
 WORKDIR /usr/src/app
-
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-COPY package*.json ./
-
-# Install app dependencies
-RUN npm install
-
-# Bundle app source
 COPY . .
 
-# Creates a "dist" folder with the production build
-RUN npm run build
+COPY package*.json .
+RUN npm install
 
-# Start the server using the production build
-CMD [ "node", "dist/main.js" ]
+EXPOSE $PORT
+
+CMD npm run start;
+#CMD [ "node", "./dist/main.js" ]
