@@ -29,7 +29,7 @@ jobs:
         run: docker push ${{secrets.DOCKERHUB_USERNAME}}/${{secrets.DOCKERHUB_REPO}}:latest
         
       - name: Set execute permission on deploy.sh
-        run: chmod +x /path/to/deploy.sh
+        run: chmod +x ./deploy.sh
         
       - name: Deploy to server
         uses: appleboy/ssh-action@master
