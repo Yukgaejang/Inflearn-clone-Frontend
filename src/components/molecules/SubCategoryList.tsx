@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import Button, { ButtonStyleProps } from "../atoms/Button/Button";
 import { BsDot } from "react-icons/bs";
-import '../../styles/SubCategory.css'
 
 
 const categories: { name: string; buttonType: ButtonStyleProps["buttonType"]; size: ButtonStyleProps["size"]; }[] = [
@@ -41,7 +40,7 @@ interface CategoryButtonProps extends ButtonStyleProps {
 
 
 const SubCategoryButton = styled(Button)<CategoryButtonProps>`
-    color: ${(props) => (props.isSelected ? "#000" : "inherit")}; 
+    color: ${(props) => (props.isSelected ? "#000" : "silver")}; 
     font-weight: ${(props) => (props.isSelected ? "bold" : "normal")}; 
 `;
 
