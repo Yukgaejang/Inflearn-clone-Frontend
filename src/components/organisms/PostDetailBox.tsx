@@ -4,6 +4,10 @@ import Button from '../atoms/Button/Button';
 import '../../styles/PostDetail.css'
 import { IoMdHeartEmpty } from "react-icons/io";
 import { HiOutlineShare } from "react-icons/hi";
+/*사용방법
+ 서버에서 post로 받아온 데이터 값에 대해서 변경만 해주면 됩니다.
+ *컴포넌트가 작게 분리되어있지 않습니다. 데이터와 ui를 한번에 관리하기때문에 좋지 않은 코드라고 생각이들어
+ 다른 뷰 조립하면서 같이 수정하겠습니다.*/
 
 interface DisplayProps {
     title: string;
@@ -129,7 +133,6 @@ const examplePost = {
     content: "안녕하세요. 강의를 보고 제가 간단한 erp를 만들고 있는데요." +
         "다른건 어떻게 해결했는데요 모달창에서 부모창으로 데이터를 보내는게 안되더라고요." +
         "혹시 방법이 있을까요?<br/>제가 구현하고 싶은건요<br/>출고할 제품을 입력할때 모달창으로 미리저장된 제품을 선택하면<br/>부모창의 text창에 보내지고 출고할 제품을 다 입력했으면",
-
     tags: ["자바", "개발자"],
     author: "홍길동",
     date: "24.06.30 22:45",
