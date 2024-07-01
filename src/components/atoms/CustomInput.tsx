@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import "../../styles/Post.css";
 
 interface CustomInputProps {
     body: string;
     type: string;
+    value?: string;
+    onChange?: (value: string) => void;
 }
 
-const CustomInput: React.FC<CustomInputProps> = ({ type, body }) => {
-    const [inputValue, setInputValue] = useState<string | undefined>(undefined);
+const CustomInput: React.FC<CustomInputProps> = ({ type, body, value, onChange }) => {
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setInputValue(e.target.value as React.SetStateAction<string | undefined>);
+        if (onChange) {
+            onChange(e.target.value);
+        }
     };
 
     const getType = (type: string) => {
@@ -34,13 +38,36 @@ const CustomInput: React.FC<CustomInputProps> = ({ type, body }) => {
         return type === 'body' ? '100%' : getType(type);
     };
 
+    const autoResize = () => {
+        if (textareaRef.current) {
+            textareaRef.current.style.height = 'auto';
+            textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
+        }
+    };
+
+    useEffect(() => {
+        if (type === 'body' || type === 'head' && textareaRef.current) {
+            const textarea = textareaRef.current;
+            textarea.addEventListener('keyup', autoResize);
+            textarea.addEventListener('keydown', autoResize);
+
+            autoResize();
+
+            return () => {
+                textarea.removeEventListener('keyup', autoResize);
+                textarea.removeEventListener('keydown', autoResize);
+            };
+        }
+    }, [type]);
+
     return (
-        <textarea 
-                className='input-box' 
-                placeholder={body} 
-                style={{ height: getType(type), fontSize: getSize(type), resize: "none", fontWeight: getFontWeight(type)}} 
-                value={inputValue}
-                onChange={handleChange}
+        <textarea
+            ref={textareaRef}
+            className='input-box'
+            placeholder={body}
+            style={{ height: getType(type), fontSize: getSize(type), resize: "none", fontWeight: getFontWeight(type) }}
+            value={value}
+            onChange={handleChange}
         />
     );
 }

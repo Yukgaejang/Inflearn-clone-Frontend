@@ -1,3 +1,76 @@
+/* 모바일 환경 */
+@media screen and (max-width: 768px) {
+    .is-hidden-mobile {
+        display: none !important;
+    }
+    .post-page {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        max-width: 752px;
+        margin: 0px auto;
+        padding: 0 16px;
+        width: auto;
+    }
+    .editor-submit {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 15px;
+        padding: 16px 20px;
+        width: -webkit-fill-available;
+        border : 1px solid rgb(222, 226, 230);
+        background-color : white;
+        align-items: center;
+        -webkit-box-pack: center;
+    }
+}
+.post-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 752px;
+    margin: 0px auto;
+    padding: 0 16px;
+}
+.post-category > div {
+    display: flex;
+    max-width: 752px;
+    margin: 0px auto;
+    padding: 0px;
+    margin-bottom: 20px;
+    border-bottom : 0.125rem solid rgb(222, 226, 230);
+    -webkit-box-pack: start;
+    flex-flow: row;
+    justify-content: flex-start;
+    white-space: nowrap;
+    height: 44px;
+}
+.post-category > div > button {
+    font-size: 16px;
+    margin: 0;
+    border-width: 0px 0px 0.125rem;
+    border-top-style: inherit;
+    border-left-style: inherit;
+    border-right-style: inherit;
+    border-bottom-style: solid;
+    margin-bottom :-0.125rem;
+    padding: 14px 16px;
+    border-radius: 0.5rem 0.5rem 0px 0px;
+    height: auto;
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+.post-category > div > button:active {
+    border-color: rgb(0, 196, 113);
+    font-weight: 700;
+    color : black
+}
 .input-box {
     border: hidden;
     overflow: hidden;
@@ -9,15 +82,6 @@
     padding: 0 !important;
     margin-bottom: 16px;
 }
-.editor {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    width: 100%;
-    max-width: 752px;
-    margin: 0px auto;
-    padding: 0px 16px;
-}
 .editor-body {
     display: flex;
     flex-direction: column;
@@ -27,9 +91,20 @@
     padding: 16px 20px;
     border-radius: 8px;
     border: 1px solid #ced4da;
+    overflow-y: auto;
 }
 .editor-body > textarea {
-    flex: 1;
     font-weight: 400;
     line-height: 1.7;
+    white-space: break-spaces;
+    overflow: hidden;
+}
+.editor-submit {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    padding: 16px 0px 16px 20px;
+    background-color : white;
+    align-items: center;
+    -webkit-box-pack: center;
 }

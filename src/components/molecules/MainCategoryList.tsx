@@ -6,16 +6,20 @@ const categories: { name: string; buttonType: ButtonStyleProps["buttonType"]; si
     { name: "질문 & 답변", buttonType: "MainCategory", size: "auto" },
     { name: "고민있어요", buttonType: "MainCategory", size: "auto" },
     { name: "스터디", buttonType: "MainCategory", size: "auto" },
-    { name: "팀 프로젝트", buttonType: "MainCategory", size: "auto" },
-    { name: "블로그", buttonType: "MainCategory", size: "auto" },
-    { name: "채용", buttonType: "MainCategory", size: "auto" },
+    { name: "팀 프로젝트", buttonType: "MainCategory", size: "auto" }
 ];
 
-const MainCategoryList = () => {
+interface MainCategoryListProps {
+    onSelectCategory: (category: string) => void;
+}
+
+
+const MainCategoryList: React.FC<MainCategoryListProps> = ({ onSelectCategory }) => {
     const [selectedCategory, setSelectedCategory] = useState<string>(categories[0].name);
 
     const handleButtonClick = (name: string) => {
         setSelectedCategory(name);
+        onSelectCategory(name);
     };
 
     return (
@@ -41,7 +45,8 @@ interface CategoryButtonProps extends ButtonStyleProps {
 
 const CategoryButton = styled(Button)<CategoryButtonProps>`
     color: ${(props) => (props.isSelected ? "#00c471" : "inherit")}; 
-    font-weight: ${(props) => (props.isSelected ? "bold" : "normal")}; 
+    font-weight: ${(props) => (props.isSelected ? "bold" : "normal")};
+    border-color: ${(props) => (props.isSelected ? "rgb(0, 196, 113)" : "rgb(222, 226, 230)")};
 `;
 
 export default MainCategoryList;
