@@ -1,3 +1,48 @@
+/*게시글 상세 내용 스타일*/
+.editor-postBox{
+    display: flex;
+
+}
+.postTitle{
+    max-width: 750px;
+}
+.postDetail-head {
+    margin-bottom: 12px;
+}
+.info-author{
+    color:  #495057;
+}
+.info-data-view{
+    display: flex;
+    color: #868e96;
+    margin-top: 3px;
+    margin-bottom: 20px;
+}
+
+.info-date {
+    margin-right: 10px;
+}
+
+.postHr{
+    width:100%;
+    background: #e8e8e8;
+    height: 1px;
+    border: none;
+}
+.body-box{
+    padding: 16px 0 !important;
+}
+.tag-buttons {
+    display: flex;
+    gap: 10px;
+}
+.postDetail-Button{
+    padding: 0 58px;
+    margin-top: 50px;
+}
+.postDetail-Button Button {
+    margin-bottom: 5px;
+}
 /* 댓글 관련 */
 .comment-list {
     margin : 24px 0;
