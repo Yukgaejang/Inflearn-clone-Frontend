@@ -4,13 +4,16 @@ import Stack from "@mui/material/Stack";
 
 // 📌 사용법
 // type : 태그, 해결/미해결 - tag, resolved, unresolved
-// tags : 배열로 넘겨주어야한다.
-{/* <CustomTag tags={tags} type= "tag"/> */}
+// tags : 배열로 넘겨주어야 한다.
+{/* <CustomTag tags={tags} type="tag" onDeleteTag={handleDeleteTag} /> */}
+
 interface CustomTagProps {
     tags: string[];
-    type: string
+    type: string;
+    onDeleteTag: (tagIndex: number) => void;
 }
-const CustomTag: React.FC<CustomTagProps> = ({ type, tags }) => {
+
+const CustomTag: React.FC<CustomTagProps> = ({ type, tags, onDeleteTag }) => {
     const getChipColor = (type: string) => {
         switch (type) {
             case 'tag':
@@ -23,11 +26,24 @@ const CustomTag: React.FC<CustomTagProps> = ({ type, tags }) => {
                 return '#000000';
         }
     };
+
+    const sanitizeTag = (tag: string) => {
+        return tag.replace(/[^a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ+/_-]/g, "").toLowerCase();
+    };
+
     return (
         <Stack direction="row" spacing={1}>
-            {tags.map((tag, index) => (
-                <Chip key={index} label={tag} style={{background: getChipColor(type), margin: "0 4px 10px 0"}}/>
-            ))}
+            {tags.map((tag, index) => {
+                const sanitizedTag = sanitizeTag(tag);
+                return (
+                    <Chip 
+                        key={index} 
+                        label={sanitizedTag} 
+                        style={{ background: getChipColor(type), margin: "0 4px 10px 0" }}
+                        onDelete={() => onDeleteTag(index)}
+                    />
+                );
+            })}
         </Stack>
     );
 };

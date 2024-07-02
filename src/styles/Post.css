@@ -1,3 +1,90 @@
+/* 모바일 환경 */
+@media screen and (max-width: 768px) {
+    .is-hidden-mobile {
+        display: none !important;
+    }
+    .post-page {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        max-width: 752px;
+        margin: 0px auto;
+        padding: 0 16px;
+        width: auto !important;
+    }
+    .editor-submit {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 15px;
+        padding: 16px 20px !important;
+        width: -webkit-fill-available;
+        border : 1px solid rgb(222, 226, 230);
+        background-color : white;
+        align-items: center;
+        -webkit-box-pack: center;
+    }
+}
+.post-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 752px;
+    margin: 0px auto;
+    padding: 0 16px;
+    flex-wrap: wrap;
+    align-content: center;
+}
+.post-category {
+    margin-bottom: 1.25rem;
+    width: -webkit-fill-available;
+    overflow: auto;
+}
+.post-category > div {
+    display: flex;
+    max-width: 752px;
+    margin: 0px auto;
+    padding: 0px;
+    margin-bottom: 20px;
+    border-bottom : 0.125rem solid rgb(222, 226, 230);
+    -webkit-box-pack: start;
+    flex-flow: row;
+    justify-content: flex-start;
+    white-space: nowrap;
+    height: 44px;
+}
+.post-category > div > button {
+    font-size: 16px;
+    margin: 0;
+    border-width: 0px 0px 0.125rem;
+    border-top-style: inherit;
+    border-left-style: inherit;
+    border-right-style: inherit;
+    border-bottom-style: solid;
+    margin-bottom :-0.125rem;
+    padding: 14px 16px;
+    border-radius: 0.5rem 0.5rem 0px 0px;
+    height: auto;
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+.post-category > div > button:active {
+    border-color: rgb(0, 196, 113);
+    font-weight: 700;
+    color : black
+}
+.post-category > div > button:first-child {
+    width: 60px;
+    white-space: nowrap;
+    overflow: hidden;
+    word-wrap: break-word;
+    display: -webkit-box;
+}
 .input-box {
     border: hidden;
     overflow: hidden;
@@ -12,24 +99,69 @@
 .editor {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    width: 100%;
-    max-width: 752px;
-    margin: 0px auto;
-    padding: 0px 16px;
+    width: 100%; 
+    align-self: center;
+    flex: 1 1 0%;
+    margin-bottom: 120px;
+}
+.editor > textarea:first-child {
+    align-content: center;
+    overflow: auto;
+    margin-bottom: 3px;
 }
 .editor-body {
     display: flex;
     flex-direction: column;
     height: 100%;
     max-height: 100%;
-    min-height: 480px;
+    min-height: 460px;
     padding: 16px 20px;
     border-radius: 8px;
     border: 1px solid #ced4da;
+    overflow: auto;
+    flex: 1 1 0%
 }
 .editor-body > textarea {
-    flex: 1;
     font-weight: 400;
     line-height: 1.7;
+    white-space: break-spaces;
+    overflow: hidden;
+}
+.editor-tag > div {
+    flex-wrap: wrap;
+}
+.editor-tag > div > div {
+    border-radius: 0.5rem;
+}
+.editor-submit {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    padding: 16px 0px 16px 20px;
+    background-color : white;
+    align-items: center;
+    -webkit-box-pack: center;
+}
+.code-info-box {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    padding: 0.75rem 0.75rem 0.75rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    color: rgb(0, 137, 79);
+    background-color: rgb(229, 249, 241);
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    align-items: center;
+    width: -webkit-fill-available;
+    align-self: center;
+}
+.code-info-box > svg {
+    margin-right: 0.5rem;
+}
+.code-info-box > span {
+    text-overflow: ellipsis;
+    font-size: 0.875rem;
+    font-weight: 700;
 }
