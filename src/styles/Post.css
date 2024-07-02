@@ -127,6 +127,12 @@
     white-space: break-spaces;
     overflow: hidden;
 }
+.editor-tag > div {
+    flex-wrap: wrap;
+}
+.editor-tag > div > div {
+    border-radius: 0.5rem;
+}
 .editor-submit {
     display: flex;
     justify-content: flex-end;

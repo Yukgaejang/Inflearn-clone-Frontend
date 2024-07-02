@@ -6,9 +6,10 @@ interface CustomInputProps {
     type: string;
     value?: string;
     onChange?: (value: string) => void;
+    onKeyPress?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
 }
 
-const CustomInput: React.FC<CustomInputProps> = ({ type, body, value, onChange }) => {
+const CustomInput: React.FC<CustomInputProps> = ({ type, body, value, onChange, onKeyPress }) => {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -68,6 +69,7 @@ const CustomInput: React.FC<CustomInputProps> = ({ type, body, value, onChange }
             style={{ height: getType(type), fontSize: getSize(type), resize: "none", fontWeight: getFontWeight(type) }}
             value={value}
             onChange={handleChange}
+            onKeyPress={onKeyPress}
         />
     );
 }
