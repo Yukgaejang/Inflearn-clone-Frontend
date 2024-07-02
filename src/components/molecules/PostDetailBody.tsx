@@ -11,9 +11,7 @@ const PostBody: React.FC<PostBodyProps> = ({ content }) => {
             <div
                 className='body-box'
                 style={{
-                    minHeight: '300px',
                     lineHeight: '2',
-                    height: '16px',
                     fontSize: '16px',
                     fontWeight: 'normal'
                 }}

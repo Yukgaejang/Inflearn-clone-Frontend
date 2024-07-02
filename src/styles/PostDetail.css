@@ -1,10 +1,21 @@
 /*게시글 상세 내용 스타일*/
-.editor-postBox{
+.postDetail-box{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+
 }
-.postTitle{
+.editor-postBox{
+    flex: 1 1 750px;
+    z-index: 1;
+    margin: 0 auto;
     max-width: 750px;
+}
+.editor-post-title{
+    position: relative;
+    padding: 42px 32px;
+}
+.PostHeader{
+    border-bottom: 1px solid #f1f3f5;
 }
 .postDetail-head {
     margin-bottom: 12px;
@@ -23,28 +34,47 @@
     margin-right: 10px;
 }
 
-.postHr{
-    width:100%;
-    background: #e8e8e8;
-    height: 1px;
-    border: none;
-}
 .body-box{
     padding: 16px 0 !important;
 }
 .tag-buttons {
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: -8px;
 }
-.postDetail-Button{
-    padding: 0 58px;
-    margin-top: 50px;
-    position: fixed;
+.tag-buttons Button{
+    margin: 0 8px 8px 0;
+}
 
+/*게시판 상세 양쪽 버튼*/
+.postDetail-Button{
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    margin-top: 57px;
+    width: 100%;
+}
+.postDetail-ButtonLeft{
+    justify-content: flex-end;
+    padding: 0 58px;
+    flex: 1 1 260px;
+    display: flex;
+}
+.postDetail-space{
+    flex: 0 0 750px;
+    max-width: 750px;
+}
+.postDetail-ButtonRight{
+    padding: 0 58px;
+    flex: 1 1 260px;
+    display: flex;
+    flex-direction: column;
 }
 .postDetail-Button Button {
     margin-bottom: 5px;
 }
+
+
 /* 댓글 관련 */
 .comment-list {
     margin : 24px 0;

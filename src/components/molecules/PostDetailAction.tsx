@@ -7,12 +7,21 @@ import '../../styles/PostDetail.css';
 const PostActions: React.FC = () => {
     return (
         <div className="postDetail-Button">
-            <Button size="small" buttonType="noneBorder">
-                <IoMdHeartEmpty /> 3
-            </Button>
-            <Button size="small" buttonType="noneBorder">
-                <HiOutlineShare /> 공유
-            </Button>
+            <div className="postDetail-ButtonLeft">
+               <Button size="small" buttonType="noneBorder">
+                   뒤로
+               </Button>
+            </div>
+            <div className="postDetail-space"/>
+            <div className="postDetail-ButtonRight">
+                <Button size="small" buttonType="noneBorder">
+                    <IoMdHeartEmpty /> 3
+                </Button>
+                <Button size="small" buttonType="noneBorder">
+                    <HiOutlineShare /> 공유
+                </Button>
+            </div>
+
         </div>
     );
 };
