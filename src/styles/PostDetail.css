@@ -1,7 +1,7 @@
 /*게시글 상세 내용 스타일*/
 .editor-postBox{
     display: flex;
-
+    flex-direction: column;
 }
 .postTitle{
     max-width: 750px;
@@ -39,6 +39,8 @@
 .postDetail-Button{
     padding: 0 58px;
     margin-top: 50px;
+    position: fixed;
+
 }
 .postDetail-Button Button {
     margin-bottom: 5px;
