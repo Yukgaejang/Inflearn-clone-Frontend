@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import CustomInput from "../atoms/CustomInput";
 import Button from "../atoms/Button/Button";
+import CustomTag from "../atoms/CustomTag";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
 
 interface PostComponentProps {
     category: string;
@@ -58,7 +61,9 @@ const categoryContents: CategoryContents = {
 const PostComponent: React.FC<PostComponentProps> = ({ category }) => {
     const [content, setContent] = useState<string>("");
     const [contentHead, setContentHead] = useState<string>("");
-    const [contentTag, setContentTag] = useState<string>("");
+    const [contentTag, setContentTag] = useState<string[]>([]);
+    const [currentTag, setCurrentTag] = useState<string>("");
+    const [openSnackbar, setOpenSnackbar] = useState(false);
 
     useEffect(() => {
         if (category === "스터디" || category === "팀 프로젝트") {
@@ -72,15 +77,54 @@ const PostComponent: React.FC<PostComponentProps> = ({ category }) => {
         setContent(newContent);
     };
 
+    const handleTagChange = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        setCurrentTag(currentTag.replace(/[^a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ+/_-]/g, "").toLowerCase())
+        if (e.key === 'Enter' && currentTag.trim() !== "") {
+            if (contentTag.length < 10) {
+                setContentTag([...contentTag, currentTag.trim()]);
+                setCurrentTag("");
+            } else {
+                setOpenSnackbar(true);
+            }
+        }
+    };
+
+    const handleDeleteTag = (tagToDelete: number) => {
+        setContentTag(contentTag.filter((tag, index) => index !== tagToDelete));
+    };    
+
+    const handleCloseSnackbar = () => {
+        setOpenSnackbar(false);
+    };
+
     const handleSubmit = async () => {
+        if (!contentHead.trim() || !content.trim()) {
+            return;
+        }
+    
         const postData = {
-            category,
+            userId: 0,
             title: contentHead,
             tags: contentTag,
-            body: content
+            category: category,
+            content: content
         };
 
-        console.log(postData);
+        try {
+            const response = await fetch('/board/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(postData),
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
 
     return (
@@ -91,11 +135,19 @@ const PostComponent: React.FC<PostComponentProps> = ({ category }) => {
                 value={contentHead}
                 onChange={setContentHead}
             />
-            <CustomInput
-                type="tag"
-                body="태그를 설정하세요 (최대 10개)"
-                value={contentTag}
-                onChange={setContentTag}
+            <div className="editor-tag">
+                <CustomTag 
+                    tags={contentTag} 
+                    type="tag" 
+                    onDeleteTag={handleDeleteTag} 
+                />
+            </div>
+            <CustomInput 
+                type="tag" 
+                body="태그를 설정하세요 (최대 10개)" 
+                value={currentTag} 
+                onChange={setCurrentTag} 
+                onKeyPress={handleTagChange} 
             />
             <div className="editor-body">
                 <CustomInput
@@ -113,6 +165,11 @@ const PostComponent: React.FC<PostComponentProps> = ({ category }) => {
                 등록
                 </Button>
             </div>
+            <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar}>
+                <MuiAlert elevation={6} onClose={handleCloseSnackbar} severity="error">
+                    태그는 최대 10개까지 등록할 수 있습니다.
+                </MuiAlert>
+            </Snackbar>
         </div>
     );
 };
