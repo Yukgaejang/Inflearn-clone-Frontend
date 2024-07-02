@@ -27,7 +27,7 @@ const MainCategoryList: React.FC<MainCategoryListProps> = ({ onSelectCategory, d
     };
 
     return (
-        <div>
+        <div className="main-category">
             {categories.map((category, index) => (
                 <CategoryButton
                     key={index}

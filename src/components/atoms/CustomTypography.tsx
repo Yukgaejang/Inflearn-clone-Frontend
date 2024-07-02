@@ -29,13 +29,13 @@ const theme: Theme = createTheme({
             color: '#495057'
         },
         body2: {
-            fontSize: '0.9rem',
-            color: 'black',
-            fontWeight: 'bolder'
+            fontSize: '0.87rem',
+            color: '#212529',
+            fontWeight: '600'
         },
         body3: {
-            fontSize: '0.9rem',
-            color: 'black',
+            fontSize: '0.85rem',
+            color: '#495057',
         },
         body4: {
             fontSize: '0.675rem',

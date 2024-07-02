@@ -42,6 +42,7 @@ interface CategoryButtonProps extends ButtonStyleProps {
 const SubCategoryButton = styled(Button)<CategoryButtonProps>`
     color: ${(props) => (props.isSelected ? "#000" : "silver")}; 
     font-weight: ${(props) => (props.isSelected ? "bold" : "normal")}; 
+    font-size: 13px;
 `;
 
 export default SubCategoryList;
