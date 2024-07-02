@@ -20,7 +20,7 @@ const CustomInput: React.FC<CustomInputProps> = ({ type, body, value, onChange }
     const getType = (type: string) => {
         switch (type) {
             case 'head':
-                return "25px";
+                return "24px";
             case 'body':
                 return '16px';
             case 'tag':
@@ -58,7 +58,7 @@ const CustomInput: React.FC<CustomInputProps> = ({ type, body, value, onChange }
                 textarea.removeEventListener('keydown', autoResize);
             };
         }
-    }, [type]);
+    }, [type, value]);
 
     return (
         <textarea

@@ -11,13 +11,17 @@ const categories: { name: string; buttonType: ButtonStyleProps["buttonType"]; si
 
 interface MainCategoryListProps {
     onSelectCategory: (category: string) => void;
+    displayShortName?: boolean;
 }
 
 
-const MainCategoryList: React.FC<MainCategoryListProps> = ({ onSelectCategory }) => {
-    const [selectedCategory, setSelectedCategory] = useState<string>(categories[0].name);
+const MainCategoryList: React.FC<MainCategoryListProps> = ({ onSelectCategory, displayShortName = false }) => {
+    const initialCategoryName = displayShortName ? categories[0].name.split(" & ")[0] : categories[0].name;
+    const [selectedCategory, setSelectedCategory] = useState<string>(initialCategoryName);
+    
 
     const handleButtonClick = (name: string) => {
+        const categoryName = displayShortName ? name.split(" & ")[0] : name;
         setSelectedCategory(name);
         onSelectCategory(name);
     };
@@ -28,10 +32,10 @@ const MainCategoryList: React.FC<MainCategoryListProps> = ({ onSelectCategory })
                 <CategoryButton
                     key={index}
                     {...category}
-                    isSelected={category.name === selectedCategory}
+                    isSelected={displayShortName ? category.name.split(" & ")[0] === selectedCategory : category.name === selectedCategory}
                     onClick={() => handleButtonClick(category.name)}
                 >
-                    {category.name}
+                    {displayShortName ? category.name.split(" & ")[0] : category.name}
                 </CategoryButton>
             ))}
         </div>

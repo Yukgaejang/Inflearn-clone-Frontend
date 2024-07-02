@@ -10,7 +10,7 @@
         max-width: 752px;
         margin: 0px auto;
         padding: 0 16px;
-        width: auto;
+        width: auto !important;
     }
     .editor-submit {
         position: fixed;
@@ -19,7 +19,7 @@
         display: flex;
         justify-content: flex-end;
         gap: 15px;
-        padding: 16px 20px;
+        padding: 16px 20px !important;
         width: -webkit-fill-available;
         border : 1px solid rgb(222, 226, 230);
         background-color : white;
@@ -35,6 +35,13 @@
     max-width: 752px;
     margin: 0px auto;
     padding: 0 16px;
+    flex-wrap: wrap;
+    align-content: center;
+}
+.post-category {
+    margin-bottom: 1.25rem;
+    width: -webkit-fill-available;
+    overflow: auto;
 }
 .post-category > div {
     display: flex;
@@ -71,6 +78,13 @@
     font-weight: 700;
     color : black
 }
+.post-category > div > button:first-child {
+    width: 60px;
+    white-space: nowrap;
+    overflow: hidden;
+    word-wrap: break-word;
+    display: -webkit-box;
+}
 .input-box {
     border: hidden;
     overflow: hidden;
@@ -82,16 +96,30 @@
     padding: 0 !important;
     margin-bottom: 16px;
 }
+.editor {
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    align-self: center;
+    flex: 1 1 0%;
+    margin-bottom: 120px;
+}
+.editor > textarea:first-child {
+    align-content: center;
+    overflow: auto;
+    margin-bottom: 3px;
+}
 .editor-body {
     display: flex;
     flex-direction: column;
     height: 100%;
     max-height: 100%;
-    min-height: 480px;
+    min-height: 460px;
     padding: 16px 20px;
     border-radius: 8px;
     border: 1px solid #ced4da;
-    overflow-y: auto;
+    overflow: auto;
+    flex: 1 1 0%
 }
 .editor-body > textarea {
     font-weight: 400;
@@ -107,4 +135,27 @@
     background-color : white;
     align-items: center;
     -webkit-box-pack: center;
+}
+.code-info-box {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    padding: 0.75rem 0.75rem 0.75rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    color: rgb(0, 137, 79);
+    background-color: rgb(229, 249, 241);
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    align-items: center;
+    width: -webkit-fill-available;
+    align-self: center;
+}
+.code-info-box > svg {
+    margin-right: 0.5rem;
+}
+.code-info-box > span {
+    text-overflow: ellipsis;
+    font-size: 0.875rem;
+    font-weight: 700;
 }
