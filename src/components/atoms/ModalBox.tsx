@@ -45,7 +45,6 @@ const ModalBox: React.FC<ModalBoxProps> = ({ head, body, size, type, open, setOp
                 {getType(type)}
                 <CustomTypography type="head" body={head}/>
                 <CustomTypography type="body" body={body}/>
-                {/* 세미가 버튼 만들면 추가하기! */}
                 {children}
             </div>
         </Modal>
