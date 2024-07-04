@@ -71,7 +71,7 @@
     flex-direction: column;
 }
 .postDetail-Button Button {
-    margin-bottom: 5px;
+    margin-bottom: 12px;
 }
 
 
@@ -80,14 +80,20 @@
     margin : 24px 0;
 }
 .comment {
-    padding: 20px 0;
+    padding: 32px 15px;
     border-bottom: 1px solid #e9ecef;
+    position: relative;
 }
 .down-comment {
     padding-left: 15px;
     margin-left: -6px;
     border-left: 6px solid #e9ecef;
     margin-top: 20px;
+}
+.RepliesButton {
+    position: absolute;
+    top: 144px;
+    left: 113px;
 }
 .comment-user {
     display: flex;
@@ -99,6 +105,7 @@
 .comment-body {
     min-width: 48px;
     margin: 8px 0 16px;
+    line-height: 2;
 }
 .footer-button {
     display: flex;

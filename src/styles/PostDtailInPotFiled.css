@@ -1,0 +1,12 @@
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+.button-InputField{
+    margin: 20px 0 5px 0;
+}
+
+.button-container button {
+    margin: 0 5px;
+}

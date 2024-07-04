@@ -38,11 +38,11 @@ const theme: Theme = createTheme({
             color: '#495057',
         },
         body4: {
-            fontSize: '0.675rem',
+            fontSize: '0.875rem',
             color: 'black',
         },
         additional: {
-            fontSize: '0.8rem',
+            fontSize: '0.875rem',
             color: 'gray'
         },
     },
