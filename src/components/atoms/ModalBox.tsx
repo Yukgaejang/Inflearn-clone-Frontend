@@ -33,7 +33,7 @@ const ModalBox: React.FC<ModalBoxProps> = ({ head, body, size, type, open, setOp
             case 'problem':
                 return <ReportProblemIcon sx={{ color: orange[400], fontSize: "56px" }}/>;
             case 'login':
-                return <img src={InflearnTextLogo} alt="Inflearn Logo" style={{ maxWidth: '130px', maxHeight: '80px' }} />;
+                return <img src={InflearnTextLogo} alt="Inflearn Logo" style={{ maxWidth: '130px', maxHeight: '80px', marginTop:'20px'  }} />;
             default:
                 return '';
         }
