@@ -4,6 +4,7 @@ import "../../styles/Board.css";
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import { orange } from '@mui/material/colors';
 import Modal from '@mui/material/Modal';
+import InflearnTextLogo from '../../inflearnTextLogo.png';
 
 interface ModalBoxProps {
     type: string
@@ -12,9 +13,10 @@ interface ModalBoxProps {
     body: string;
     open: boolean;
     setOpen: (open: boolean) => void;
+    children?: React.ReactNode;
 }
 
-const ModalBox: React.FC<ModalBoxProps> = ({ head, body, size, type, open, setOpen }) => {
+const ModalBox: React.FC<ModalBoxProps> = ({ head, body, size, type, open, setOpen,  children }) => {
     const handleClose = () => setOpen(false);
     const getSize = (size: string) => {
         switch (size) {
@@ -30,6 +32,8 @@ const ModalBox: React.FC<ModalBoxProps> = ({ head, body, size, type, open, setOp
         switch (type){
             case 'problem':
                 return <ReportProblemIcon sx={{ color: orange[400], fontSize: "56px" }}/>;
+            case 'login':
+                return <img src={InflearnTextLogo} alt="Inflearn Logo" style={{ maxWidth: '130px', maxHeight: '80px' }} />;
             default:
                 return '';
         }
@@ -39,9 +43,10 @@ const ModalBox: React.FC<ModalBoxProps> = ({ head, body, size, type, open, setOp
         <Modal open={open} onClose={handleClose}>
             <div className="modal-box" style={{maxWidth: getSize(size)}}>
                 {getType(type)}
-                <CustomTypography type="head" body={head} />
-                <CustomTypography type="body" body={body} />
+                <CustomTypography type="head" body={head}/>
+                <CustomTypography type="body" body={body}/>
                 {/* 세미가 버튼 만들면 추가하기! */}
+                {children}
             </div>
         </Modal>
     );
