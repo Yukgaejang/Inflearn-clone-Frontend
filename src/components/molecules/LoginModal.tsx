@@ -20,7 +20,7 @@ const ProblemModal: React.FC<ProblemModalProps> = ({ open, setOpen }) => {
             <ModalBox
                 type="login"
                 size="small"
-                head="로그인"
+                head=""
                 body=""
                 open={open}
                 setOpen={setOpen}
