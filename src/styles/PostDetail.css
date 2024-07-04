@@ -112,3 +112,42 @@
     align-items: center;
     justify-content: space-between;
 }
+
+
+@media all and (max-width: 768px){
+    .postDetail-ButtonLeft{
+        display: none;
+    }
+    .postDetail-space {
+        flex: 0 0 0;
+        max-width: 750px;
+    }
+    .postDetail-box {
+        display: flex;
+        flex-direction: column;
+    }
+    .postDetail-Button {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        margin-top: 57px;
+        width: 100%;
+        justify-content: center;
+    }
+    .editor-postBox {
+        flex: 1 1 0;
+        z-index: 1;
+        margin: 0 auto;
+        max-width: 750px;
+    }
+    .postDetail-ButtonRight {
+        flex: 1 1 260px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+    .postDetail-Button Button {
+        margin: 15px 15px;
+    }
+}
