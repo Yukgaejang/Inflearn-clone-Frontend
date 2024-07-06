@@ -43,9 +43,10 @@ export const whiteButton = css`
         background-color: #ffffff;
         color: #000000;
         border-width: 1px;
-        border-color: #cacaca;
+        border-color: #e9ecef;
         font-weight: bold;
         border-radius: 7px;
+        box-shadow:none;
         &:hover {
             background-color: #f6f6f6;
         }

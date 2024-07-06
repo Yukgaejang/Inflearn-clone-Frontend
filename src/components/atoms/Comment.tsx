@@ -1,16 +1,29 @@
 import React from "react";
 import CustomTypography from "./CustomTypography";
 import "../../styles/PostDetail.css";
+import CommentButton, {  ReplyButton } from "../molecules/CommentButton.jsx";
 
 interface CommentProps {
     name: string;
     date: string;
     body: string;
     depth: number;
+    showReplies: boolean;
+    onToggleReplies: () => void;
 }
 
-const Comment: React.FC<CommentProps> = ({ name, date, body, depth }) => {
+const Comment: React.FC<CommentProps> = ({ name, date, body, depth, showReplies, onToggleReplies }) => {
     const isDepthOne = depth === 1;
+    const [showInputField, setShowInputField] = React.useState(false);
+
+    const handleShowInputField = () => {
+        setShowInputField(!showInputField);
+    };
+
+    const handleSearch = (query: string) => {
+        console.log(`Searching for: ${query}`);
+    };
+
     return (
         <div className={isDepthOne ? "down-comment" : "up-comment"}>
             <div className="comment-user">
@@ -24,7 +37,10 @@ const Comment: React.FC<CommentProps> = ({ name, date, body, depth }) => {
             </div>
             {!isDepthOne && (
                 <div className="comment-footer-button">
-                    {/* 펼침/숨기기, 답글 달기 버튼 구역 */}
+                    <ReplyButton onClick={handleShowInputField} />
+                    <CommentButton showInputField={showInputField}
+                                   setShowInputField={setShowInputField}
+                                   handleSearch={handleSearch}/>
                 </div>
             )}
         </div>
