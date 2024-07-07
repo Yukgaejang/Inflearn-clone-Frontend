@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CustomInput from "../atoms/CustomInput";
 import Button from "../atoms/Button/Button";
+import { customizedAxios } from '../../util/CustomizedAxios';
 
 interface PostComponentProps {
     category: string;
@@ -74,13 +75,23 @@ const PostComponent: React.FC<PostComponentProps> = ({ category }) => {
 
     const handleSubmit = async () => {
         const postData = {
-            category,
+            userId: 1,
+            category : category,
             title: contentHead,
-            tags: contentTag,
-            body: content
+            tagNames: contentTag,
+            content: content
         };
 
-        console.log(postData);
+        try {
+            const response = await customizedAxios.post(`/boards/create`, postData);
+            if (response.status !== 200) {
+                throw new Error('Network response was not ok');
+            }
+            
+            console.log('Success:', response.data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
 
     return (
