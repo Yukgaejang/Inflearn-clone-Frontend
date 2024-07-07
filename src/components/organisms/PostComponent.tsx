@@ -16,15 +16,15 @@ interface CategoryContents {
 }
 
 const categoryContents: CategoryContents = {
-    "질문": `- 학습 관련 질문을 남겨주세요. 상세히 작성하면 더 좋아요!
+    "questions": `- 학습 관련 질문을 남겨주세요. 상세히 작성하면 더 좋아요!
 - 마크다운, 단축키를 이용해서 편리하게 글을 작성할 수 있어요.
 - 먼저 유사한 질문이 있었는지 검색해보세요.
 - 서로 예의를 지키며 존중하는 문화를 만들어가요.
 - 잠깐! 인프런 서비스 운영 관련 문의는 1:1 문의하기를 이용해주세요.`,
-    "고민있어요": `- 마크다운, 단축키를 이용해서 편리하게 글을 작성할 수 있어요.
+    "chats": `- 마크다운, 단축키를 이용해서 편리하게 글을 작성할 수 있어요.
 - 서로 예의를 지키며 존중하는 문화를 만들어가요.
 - 잠깐! 인프런 서비스 운영 관련 문의는 1:1 문의하기를 이용해주세요.`,
-    "스터디": `[개발 스터디 모집 내용 예시]
+    "studies": `[개발 스터디 모집 내용 예시]
 
 스터디 주제 :
 
@@ -41,7 +41,7 @@ const categoryContents: CategoryContents = {
 스터디 관련 주의사항 :
 
 스터디에 지원할 수 있는 방법을 남겨주세요. (이메일, 카카오 오픈채팅방, 구글폼 등.) :`,
-    "팀 프로젝트": `[개발 프로젝트 모집 내용 예시]
+    "projects": `[개발 프로젝트 모집 내용 예시]
 
 프로젝트 주제 :
 
@@ -68,7 +68,7 @@ const PostComponent: React.FC<PostComponentProps> = ({ category }) => {
     const [openSnackbar, setOpenSnackbar] = useState(false);
 
     useEffect(() => {
-        if (category === "스터디" || category === "팀 프로젝트") {
+        if (category === "studies" || category === "projects") {
             setContent(categoryContents[category]);
         } else {
             setContent("");
@@ -106,7 +106,7 @@ const PostComponent: React.FC<PostComponentProps> = ({ category }) => {
     
         const postData = {
             userId: 1,
-            category : category,
+            category: category,
             title: contentHead,
             tagNames: contentTag,
             content: content

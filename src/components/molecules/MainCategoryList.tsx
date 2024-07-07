@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import Button, { ButtonStyleProps } from "../atoms/Button/Button";
 
-const categories: { name: string; buttonType: ButtonStyleProps["buttonType"]; size: ButtonStyleProps["size"]; }[] = [
-    { name: "질문 & 답변", buttonType: "MainCategory", size: "auto" },
-    { name: "고민있어요", buttonType: "MainCategory", size: "auto" },
-    { name: "스터디", buttonType: "MainCategory", size: "auto" },
-    { name: "팀 프로젝트", buttonType: "MainCategory", size: "auto" }
+const categories: { name: string; buttonType: ButtonStyleProps["buttonType"]; size: ButtonStyleProps["size"]; category: string }[] = [
+    { name: "질문 & 답변", buttonType: "MainCategory", size: "auto", category: "questions" },
+    { name: "고민있어요", buttonType: "MainCategory", size: "auto", category: "chats" },
+    { name: "스터디", buttonType: "MainCategory", size: "auto", category: "studies" },
+    { name: "팀 프로젝트", buttonType: "MainCategory", size: "auto", category: "projects" }
 ];
 
 interface MainCategoryListProps {
@@ -14,16 +14,13 @@ interface MainCategoryListProps {
     displayShortName?: boolean;
 }
 
-
 const MainCategoryList: React.FC<MainCategoryListProps> = ({ onSelectCategory, displayShortName = false }) => {
-    const initialCategoryName = displayShortName ? categories[0].name.split(" & ")[0] : categories[0].name;
+    const initialCategoryName = displayShortName ? categories[0].category : categories[0].category;
     const [selectedCategory, setSelectedCategory] = useState<string>(initialCategoryName);
-    
 
-    const handleButtonClick = (name: string) => {
-        const categoryName = displayShortName ? name.split(" & ")[0] : name;
-        setSelectedCategory(name);
-        onSelectCategory(name);
+    const handleButtonClick = (category: string, name: string) => {
+        setSelectedCategory(category);
+        onSelectCategory(category);
     };
 
     return (
@@ -32,8 +29,8 @@ const MainCategoryList: React.FC<MainCategoryListProps> = ({ onSelectCategory, d
                 <CategoryButton
                     key={index}
                     {...category}
-                    isSelected={displayShortName ? category.name.split(" & ")[0] === selectedCategory : category.name === selectedCategory}
-                    onClick={() => handleButtonClick(category.name)}
+                    isSelected={category.category === selectedCategory}
+                    onClick={() => handleButtonClick(category.category, category.name)}
                 >
                     {displayShortName ? category.name.split(" & ")[0] : category.name}
                 </CategoryButton>
@@ -45,7 +42,6 @@ const MainCategoryList: React.FC<MainCategoryListProps> = ({ onSelectCategory, d
 interface CategoryButtonProps extends ButtonStyleProps {
     isSelected: boolean;
 }
-
 
 const CategoryButton = styled(Button)<CategoryButtonProps>`
     color: ${(props) => (props.isSelected ? "#00c471" : "inherit")}; 
