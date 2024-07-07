@@ -156,6 +156,9 @@
     flex-wrap: wrap;
     margin-top: 8px;
 }
+.question-tags > button {
+    margin-right: 3px;
+}
 .question-info-footer {
     overflow: hidden;
     text-overflow: hidden;

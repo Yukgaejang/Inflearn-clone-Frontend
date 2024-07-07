@@ -12,7 +12,8 @@ import { GoPencil } from "react-icons/go";
 import "../../styles/Board.css";
 
 const BoardTemplates = () => {
-    const [selectedCategory, setSelectedCategory] = useState<string>("질문 & 답변");
+    const [selectedCategory, setSelectedCategory] = useState<string>("questions");
+    const [selectedSubCategory, setSelectedSubCategory] = useState<string>("latest");
     const [search, setSearch ] = useState<String>("");
     const [tagSearch, setTagSearch ] = useState<String>("");
 
@@ -43,12 +44,12 @@ const BoardTemplates = () => {
                         </Button>
                     </div>
                     <div className="search-inner">
-                        <SubCategoryList />
+                        <SubCategoryList onSelectSubCategory={setSelectedSubCategory}/>
                         <Button size="medium" buttonType="black"><GoPencil/>&nbsp; 글쓰기</Button>
                     </div>
                 </div>
                 <div>
-                    {/* <BoardList category={selectedCategory} search={search} tagSearch={tagSearch}/> */}
+                    <BoardList category={selectedCategory} subCategory={selectedSubCategory} search={search} tagSearch={tagSearch}/>
                 </div>
             </div>
             <div className="board-right">
