@@ -13,7 +13,7 @@ import "../../styles/Board.css";
 
 const BoardTemplates = () => {
     const [selectedCategory, setSelectedCategory] = useState<string>("questions");
-    const [selectedSubCategory, setSelectedSubCategory] = useState<string>("latest");
+    const [selectedSubCategory, setSelectedSubCategory] = useState<string>("recent");
     const [search, setSearch ] = useState<String>("");
     const [tagSearch, setTagSearch ] = useState<String>("");
 

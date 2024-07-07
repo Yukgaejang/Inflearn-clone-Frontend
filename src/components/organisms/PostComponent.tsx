@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CustomInput from "../atoms/CustomInput";
 import Button from "../atoms/Button/Button";
-import { customizedAxios } from '../../util/CustomizedAxios';
 import CustomTag from "../atoms/CustomTag";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
