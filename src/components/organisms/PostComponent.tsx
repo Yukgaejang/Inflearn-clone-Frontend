@@ -5,6 +5,7 @@ import { customizedAxios } from '../../util/CustomizedAxios';
 import CustomTag from "../atoms/CustomTag";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
+import { customizedAxios } from '../../util/CustomizedAxios';
 
 interface PostComponentProps {
     category: string;
@@ -104,13 +105,23 @@ const PostComponent: React.FC<PostComponentProps> = ({ category }) => {
         }
     
         const postData = {
-            category,
+            userId: 1,
+            category : category,
             title: contentHead,
-            tags: contentTag,
-            body: content
+            tagNames: contentTag,
+            content: content
         };
 
-        console.log(postData);
+        try {
+            const response = await customizedAxios.post(`/boards/create`, postData);
+            if (response.status !== 200) {
+                throw new Error('Network response was not ok');
+            }
+            
+            console.log('Success:', response.data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
 
     return (
