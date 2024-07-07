@@ -38,9 +38,9 @@ const BoardList: React.FC<BoardListProps> = ({ category, subCategory, search, ta
             try {
                 const response = await customizedAxios.get(`/boards/${category}`, {
                     params: {
+                        order: subCategory,
                         page: currentPage - 1,
                         size: 15,
-                        order: subCategory
                     }
                 });
                 if (response.status === 200) {

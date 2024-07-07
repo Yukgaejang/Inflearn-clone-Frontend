@@ -4,10 +4,10 @@ import Button, { ButtonStyleProps } from "../atoms/Button/Button";
 import { BsDot } from "react-icons/bs";
 
 const categories: { name: string; buttonType: ButtonStyleProps["buttonType"]; size: ButtonStyleProps["size"]; category: string; }[] = [
-    { name: "최신순", buttonType: "SubCategory", size: "auto", category: "recent" },
+    { name: "최신순", buttonType: "SubCategory", size: "auto", category: "date" },
     { name: "조회순", buttonType: "SubCategory", size: "auto", category: "view" },
     { name: "답변많은순", buttonType: "SubCategory", size: "auto", category: "comment" },
-    { name: "좋아요순", buttonType: "SubCategory", size: "auto", category: "recommend" },
+    { name: "좋아요순", buttonType: "SubCategory", size: "auto", category: "like" },
 ];
 
 interface SubCategoryListProps {
