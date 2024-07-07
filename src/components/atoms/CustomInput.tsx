@@ -47,16 +47,18 @@ const CustomInput: React.FC<CustomInputProps> = ({ type, body, value, onChange, 
     };
 
     useEffect(() => {
-        if (type === 'body' || type === 'head' && textareaRef.current) {
-            const textarea = textareaRef.current;
+        if (type === 'body' || (type === 'head' && textareaRef.current)) {
+            const textarea = textareaRef.current!;
             textarea.addEventListener('keyup', autoResize);
             textarea.addEventListener('keydown', autoResize);
 
             autoResize();
 
             return () => {
-                textarea.removeEventListener('keyup', autoResize);
-                textarea.removeEventListener('keydown', autoResize);
+                if (textareaRef.current) {
+                    textareaRef.current.removeEventListener('keyup', autoResize);
+                    textareaRef.current.removeEventListener('keydown', autoResize);
+                }
             };
         }
     }, [type, value]);
