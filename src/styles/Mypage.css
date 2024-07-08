@@ -1,0 +1,48 @@
+.myboard {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    border: 1px solid #dee2e6;
+}
+.myboard-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.myboard-info {
+    display: flex;
+    flex-direction: row;
+    gap: 0.3rem;
+    align-items: center;
+}
+.myboard-info > button {
+    background-color: rgb(1, 169, 99);
+    color: white;
+    font-weight: bold;
+}
+.myboard-button > button {
+    width: 50px;
+    height: 30px;
+}
+.myboard-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+.myboard-body > div > subtitle2 {
+    font-size: 1.1rem;
+}
+.myboard-data {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.myboard-footer {
+    display: flex;
+    gap: 0.5rem;
+}
+.myboard-footer > div {
+    display: flex;
+    gap: 0.3rem;
+}
