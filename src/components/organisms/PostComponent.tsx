@@ -117,10 +117,6 @@ const PostComponent: React.FC<PostComponentProps> = ({ category }) => {
                 throw new Error('Network response was not ok');
             }
             console.log('Success:', response.data);
-
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
         } catch (error) {
             console.error('Error:', error);
         }
