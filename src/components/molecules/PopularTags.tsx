@@ -1,8 +1,7 @@
 import React from 'react';
 import "../../styles/Board.css";
 import SideBox from "../atoms/SideBox";
-import WeeklyPost from "../atoms/WeeklyPost";
-import CustomTag from '../atoms/CustomTag';
+import Button from '../atoms/Button/Button';
 
 interface PopularTagsProps {
     tags: string[];
@@ -11,7 +10,11 @@ interface PopularTagsProps {
 const printTags = (tags: string[]) => {
     return (
         <div className='tag-box'>
-            <CustomTag tags={tags} type="tag"/>
+            {tags.map((tag, index) => (
+                <Button size="auto" buttonType="tag">
+                    {tag}
+                </Button>
+            ))}
         </div>
     );
 };

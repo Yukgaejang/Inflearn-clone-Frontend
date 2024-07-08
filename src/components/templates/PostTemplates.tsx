@@ -4,7 +4,7 @@ import MainCategoryList from '../molecules/MainCategoryList';
 import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
 
 const PostTemplates = () => {
-    const [selectedCategory, setSelectedCategory] = useState<string>("질문");
+    const [selectedCategory, setSelectedCategory] = useState<string>("questions");
 
     return (
         <div className='post-page'>

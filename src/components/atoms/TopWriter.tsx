@@ -12,7 +12,7 @@ const TopWriter: React.FC<TopWriterProps> = ({ name, count }) => {
         <div className="top-writers-list">
             <img src="./logo192.png" alt="Writer Avatar" width={25}/>
             <div className="top-writers-list-writer">
-                <CustomTypography type="body" body={name}></CustomTypography>
+                <CustomTypography type="body2" body={name}></CustomTypography>
                 <CustomTypography type="additional" body={count}></CustomTypography>
             </div>
         </div>

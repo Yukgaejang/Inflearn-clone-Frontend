@@ -3,19 +3,23 @@ import styled from "@emotion/styled";
 import Button, { ButtonStyleProps } from "../atoms/Button/Button";
 import { BsDot } from "react-icons/bs";
 
-
-const categories: { name: string; buttonType: ButtonStyleProps["buttonType"]; size: ButtonStyleProps["size"]; }[] = [
-    { name: "최신순", buttonType: "SubCategory", size: "auto" },
-    { name: "조회순", buttonType: "SubCategory", size: "auto" },
-    { name: "답변많은순", buttonType: "SubCategory", size: "auto" },
-    { name: "좋아요순", buttonType: "SubCategory", size: "auto" },
+const categories: { name: string; buttonType: ButtonStyleProps["buttonType"]; size: ButtonStyleProps["size"]; category: string; }[] = [
+    { name: "최신순", buttonType: "SubCategory", size: "auto", category: "recent" },
+    { name: "조회순", buttonType: "SubCategory", size: "auto", category: "view" },
+    { name: "답변많은순", buttonType: "SubCategory", size: "auto", category: "comment" },
+    { name: "좋아요순", buttonType: "SubCategory", size: "auto", category: "recommend" },
 ];
 
-const SubCategoryList = () => {
-    const [selectedCategory, setSelectedCategory] = useState<string>(categories[0].name);
+interface SubCategoryListProps {
+    onSelectSubCategory: (category: string) => void;
+}
 
-    const handleButtonClick = (name: string) => {
-        setSelectedCategory(name);
+const SubCategoryList: React.FC<SubCategoryListProps> = ({ onSelectSubCategory }) => {
+    const [selectedCategory, setSelectedCategory] = useState<string>(categories[0].category);
+
+    const handleButtonClick = (category: string) => {
+        setSelectedCategory(category);
+        onSelectSubCategory(category);
     };
 
     return (
@@ -24,10 +28,10 @@ const SubCategoryList = () => {
                 <SubCategoryButton
                     key={index}
                     {...category}
-                    isSelected={category.name === selectedCategory}
-                    onClick={() => handleButtonClick(category.name)}
+                    isSelected={category.category === selectedCategory}
+                    onClick={() => handleButtonClick(category.category)}
                 >
-                    <BsDot color={category.name === selectedCategory ? "#00c471" : "silver"} />{category.name}
+                    <BsDot color={category.category === selectedCategory ? "#00c471" : "silver"} />{category.name}
                 </SubCategoryButton>
             ))}
         </div>
@@ -38,10 +42,10 @@ interface CategoryButtonProps extends ButtonStyleProps {
     isSelected: boolean;
 }
 
-
 const SubCategoryButton = styled(Button)<CategoryButtonProps>`
     color: ${(props) => (props.isSelected ? "#000" : "silver")}; 
     font-weight: ${(props) => (props.isSelected ? "bold" : "normal")}; 
+    font-size: 13px;
 `;
 
 export default SubCategoryList;

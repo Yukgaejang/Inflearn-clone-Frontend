@@ -5,10 +5,11 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import CustomTag from "../atoms/CustomTag";
+import Button from "../atoms/Button/Button";
 
 // 📌 사용법
 // tags : 배열로 넘겨주어야한다.
-{/* <BoardList
+{/* <BoardListOne
     resolved='미해결'
     head="Section 3 이론 classification Loss function 질문"
     body="안녕하세요.
@@ -22,8 +23,7 @@ import CustomTag from "../atoms/CustomTag";
 /> */}
 
 // 추후 해결/미해결이 한글로 받을지 영어로 받을 지 모르므로 수정 필요 주의
-interface BoardListProps {
-    resolved: string;
+interface BoardListOneProps {
     head: string;
     body: string;
     writer: string;
@@ -34,30 +34,31 @@ interface BoardListProps {
     tags: string[];
 }
 
-const BoardList: React.FC<BoardListProps> = ({ resolved, head, body, writer, time, good, view, commentsCount, tags }) => {
-    const getHeadType = () => {
-        switch (resolved) {
-            case '미해결':
-                return 'unresolved';
-            case '해결':
-                return 'resolved';
-            default:
-                return '#ced4da';
-        }
-    };
+const BoardListOne: React.FC<BoardListOneProps> = ({ head, body, writer, time, good, view, commentsCount, tags }) => {
+    // const getHeadType = () => {
+    //     switch (resolved) {
+    //         case '미해결':
+    //             return 'unresolved';
+    //         case '해결':
+    //             return 'resolved';
+    //         default:
+    //             return '#ced4da';
+    //     }
+    // };
     
     return (
         <div className="question">
             <div className="question-info">
                 <div className="question-title">
-                    <CustomTag tags={[resolved]} type={getHeadType()}/>
                     <CustomTypography type='head' body={head}></CustomTypography>
                 </div>
                 <div className="question-body">
                 <CustomTypography type='body' body={body}></CustomTypography>
                 </div>
                 <div className="question-tags">
-                    <CustomTag tags={tags} type= "tag"/>
+                    {tags.map((tag, index) => (
+                        <Button key={index} size="auto" buttonType="tag"> {tag} </Button>
+                    ))}
                 </div>
                 <div className="question-info-footer">
                     <div className="question-info-footer-detail">
@@ -85,4 +86,4 @@ const BoardList: React.FC<BoardListProps> = ({ resolved, head, body, writer, tim
     );
 }
 
-export default BoardList;
+export default BoardListOne;
