@@ -38,8 +38,8 @@ const MyBoardListOne: React.FC<MyBoardListOneProps> = ({ id, head, body, time, g
             </div>
             <div className="myboard-data">
                 <div className="myboard-body">
-                    <CustomTypography type='head' body={head}></CustomTypography>
-                    <CustomTypography type='body' body={truncateBody(body, 40)}></CustomTypography>
+                    <CustomTypography type='body2' body={head}></CustomTypography>
+                    <CustomTypography type='body4' body={truncateBody(body, 40)}></CustomTypography>
                 </div>
                 <div className="myboard-footer">
                     <div>
