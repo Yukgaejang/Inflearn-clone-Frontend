@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/Board.css";
 import PopularTags from "../molecules/PopularTags";
+import { customizedAxios } from '../../util/CustomizedAxios';
 
 const PopularTagsBox: React.FC = () => {
-    const tags = ["spring", "java", "자바", "블로그"];
+    const [tags, setTags] = useState<string[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await customizedAxios.get("/boards/toptags");
+                const tagNames = response.data.map((tag: { tagName: string }) => tag.tagName);
+                setTags(tagNames);
+            } catch (error) {
+                console.error("Error fetching:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     return (
         <div>
-            <PopularTags tags={tags}/>
+            <PopularTags tags={tags} />
         </div>
     );
 };
