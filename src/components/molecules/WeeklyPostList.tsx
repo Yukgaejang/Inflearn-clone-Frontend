@@ -16,7 +16,7 @@ const printPosts = (posts: Post[]) => {
     return (
         <>
             {posts.map((post, index) => (
-                <WeeklyPost name={post.name} body={post.body}/>
+                <WeeklyPost key={index} name={post.name} body={post.body}/>
             ))}
         </>
     );

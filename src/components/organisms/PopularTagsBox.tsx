@@ -9,7 +9,7 @@ const PopularTagsBox: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await customizedAxios.get("/boards/toptags");
+                const response = await customizedAxios.get("/boards/top/tags");
                 const tagNames = response.data.map((tag: { tagName: string }) => tag.tagName);
                 setTags(tagNames);
             } catch (error) {

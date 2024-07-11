@@ -4,7 +4,7 @@ import TopWriterList from "../molecules/TopWriterList";
 import { customizedAxios } from '../../util/CustomizedAxios';
 
 const TopWrtiersBox: React.FC = () => {
-    const [writers, setwriters] = useState<{ name: string; count: string }[]>([]);
+    const [writers, setWriters] = useState<{ name: string; count: string }[]>([]);
     // const writers = [
     //     { name: "Alice", count: "30" },
     //     { name: "Bob", count: "25" },
@@ -16,8 +16,12 @@ const TopWrtiersBox: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await customizedAxios.get("/boards/topwriters");
-                setwriters(response.data);
+                const response = await customizedAxios.get("/boards/top/writers");
+                const mappedWriters = response.data.map((writer: { score: number; nickname: string }) => ({
+                    name: writer.nickname,
+                    count: writer.score.toString(),
+                }));
+                setWriters(mappedWriters);
             } catch (error) {
                 console.error("Error fetching:", error);
             }
