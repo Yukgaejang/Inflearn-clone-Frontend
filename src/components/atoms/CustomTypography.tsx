@@ -52,10 +52,10 @@ const theme: Theme = createTheme({
                 variantMapping: {
                     head: "h5", // 게시글 목록에서 타이틀(head)
                     sidehead : "h6",
-                    body: "subtitle1",
-                    body2: "subtitle2",
+                    body: "body",
+                    body2: "body",
                     body3: "body",
-                    body4: "body2",
+                    body4: "body",
                     additional: "overline", // 작성자, 시간, 좋아요, 조회수, 댓글수 등 부가 정보
                 },
             },
