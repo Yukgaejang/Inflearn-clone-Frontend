@@ -31,8 +31,8 @@ const BoardTemplates = () => {
     };
 
     const handleReset = () => {
-        setSearch("");
-        setTagSearch("");
+        setSearch(null);
+        setTagSearch(null);
         setSelectedSubCategory("date");
     };
 
