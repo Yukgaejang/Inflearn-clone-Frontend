@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import CustomInput from "../atoms/CustomInput";
 import Button from "../atoms/Button/Button";
 import CustomTag from "../atoms/CustomTag";
@@ -65,6 +66,7 @@ const PostComponent: React.FC<PostComponentProps> = ({ category }) => {
     const [contentTag, setContentTag] = useState<string[]>([]);
     const [currentTag, setCurrentTag] = useState<string>("");
     const [openSnackbar, setOpenSnackbar] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (category === "studies" || category === "projects") {
@@ -122,6 +124,10 @@ const PostComponent: React.FC<PostComponentProps> = ({ category }) => {
         }
     };
 
+    const handleCancel = () => {
+        navigate('/community');
+    };
+
     return (
         <div className="editor">
             <CustomInput
@@ -153,7 +159,7 @@ const PostComponent: React.FC<PostComponentProps> = ({ category }) => {
                 />
             </div>
             <div className="editor-submit">
-                <Button size="small" buttonType="white">
+                <Button size="small" buttonType="white" onClick={handleCancel}>
                     취소
                 </Button>
                 <Button size="small" buttonType="green" onClick={handleSubmit}>

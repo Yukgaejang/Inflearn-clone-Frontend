@@ -16,7 +16,7 @@ const printWriters = (writers: Writer[]) => {
     return (
         <>
             {writers.map((writer, index) => (
-                <TopWriter name={writer.name} count={writer.count} />
+                <TopWriter key={index} name={writer.name} count={writer.count} />
             ))}
         </>
     );

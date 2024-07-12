@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import Button, { ButtonStyleProps } from "../atoms/Button/Button";
 import { BsDot } from "react-icons/bs";
@@ -11,11 +11,18 @@ const categories: { name: string; buttonType: ButtonStyleProps["buttonType"]; si
 ];
 
 interface SubCategoryListProps {
+    selectedSubCategory?: string;
     onSelectSubCategory: (category: string) => void;
 }
 
-const SubCategoryList: React.FC<SubCategoryListProps> = ({ onSelectSubCategory }) => {
-    const [selectedCategory, setSelectedCategory] = useState<string>(categories[0].category);
+const SubCategoryList: React.FC<SubCategoryListProps> = ({ selectedSubCategory, onSelectSubCategory }) => {
+    const [selectedCategory, setSelectedCategory] = useState<string>(selectedSubCategory || categories[0].category);
+
+    useEffect(() => {
+        if (selectedSubCategory) {
+            setSelectedCategory(selectedSubCategory);
+        }
+    }, [selectedSubCategory]);
 
     const handleButtonClick = (category: string) => {
         setSelectedCategory(category);

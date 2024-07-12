@@ -5,7 +5,7 @@ import WeeklyPost from "../atoms/WeeklyPost";
 
 interface Post {
     name: string;
-    body: string;
+    title: string;
 }
 
 interface WeeklyPostListProps {
@@ -16,7 +16,7 @@ const printPosts = (posts: Post[]) => {
     return (
         <>
             {posts.map((post, index) => (
-                <WeeklyPost name={post.name} body={post.body}/>
+                <WeeklyPost key={index} name={post.name} body={post.title}/>
             ))}
         </>
     );

@@ -11,7 +11,7 @@ const printTags = (tags: string[]) => {
     return (
         <div className='tag-box'>
             {tags.map((tag, index) => (
-                <Button size="auto" buttonType="tag">
+                <Button key={index} size="auto" buttonType="tag">
                     {tag}
                 </Button>
             ))}

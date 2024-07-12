@@ -59,6 +59,35 @@ const BoardList: React.FC<BoardListProps> = ({ category, subCategory, search, ta
         fetchData();
     }, [category, currentPage, subCategory]);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+            try {
+                const response = await customizedAxios.get(`/boards/search`, {
+                    params: {
+                        keyword: search,
+                        page: currentPage - 1,
+                        size: 15,
+                        sort: subCategory,
+                    }
+                });
+                if (response.status === 200) {
+                    setBoardData(response.data.body.content);
+                    setTotalPages(response.data.body.totalPages);
+                } else {
+                    throw new Error('Failed to fetch board data');
+                }
+            } catch (error) {
+                setError('Failed to fetch board data'); 
+            } finally {
+                setLoading(false);
+            }
+        };
+    
+        fetchData();
+    }, [category, currentPage, subCategory, search]);
+    
+
     const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
         setCurrentPage(page);
     };
