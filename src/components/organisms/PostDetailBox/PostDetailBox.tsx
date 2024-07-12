@@ -17,6 +17,7 @@ interface DisplayProps {
 const PostDetailBox: React.FC<DisplayProps> = ({ title, content, tags, author, date, views }) => {
     return (
         <div className="postDetail-box">
+            <PostActions />
             <div className="editor-postBox">
                 <div className="editor-post-title">
                     <PostHeader title={title} author={author} date={date} views={views} />
@@ -26,7 +27,7 @@ const PostDetailBox: React.FC<DisplayProps> = ({ title, content, tags, author, d
 
 
             </div>
-            <PostActions />
+
         </div>
     );
 };
