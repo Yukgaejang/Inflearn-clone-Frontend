@@ -4,12 +4,51 @@ import '../../styles/SingUp.css'
 import SingUpSocial  from "../molecules/SingUp-Social";
 import InflearnLogoImg from "../../inflearnLogo.jpg"
 import RallitLogoImg from "../../rallitLogo.png"
+import InputField from "../atoms/InputField";
+import SocialSingUpButton from "../atoms/Button/SocialSingUpButton";
+
 
 const SingUpTemplates = () => {
+    const handleSearch = (query: string) => {
+        console.log(`Searching for: ${query}`);
+    };
+
+    const handleSignUp = async () => {
+        const email = '';
+        const password = '';
+
+        try {
+            const response = await fetch('https://wooyong.shop/auth/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email,
+                    password,
+                    nickname: 'eksfn12s',
+                    loginType: 0,
+                    authorityType: 'ROLE_USER'
+                }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                console.log('회원가입 성공', data);
+            } else {
+                console.error('회원가입 실패', data);
+            }
+        } catch (error) {
+            console.error('API 호출 중 오류 발생:', error);
+        }
+    };
+
+
     return (
         <div className="singUpTemplates">
             <div className="singUpTemplatesTitle">
-                <a className="LogoImg" >
+                <a className="LogoImg">
                     <img src={InflearnLogoImg}/>
                 </a>
                 <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="link-simple"
@@ -25,8 +64,58 @@ const SingUpTemplates = () => {
 
             </div>
             <div className="singUpTemplates-text">
-                <div className="singUpTitle">로그인</div>
-                <CustomTypography type="body" body="인프런 계정으로 로그인할 수 있어요"/>
+                <div className="singUpTitle">회원가입</div>
+                <CustomTypography
+                    type="body"
+                    body="인프런 계정으로 로그인할 수 있어요"
+                />
+            </div>
+            <div className="singUpInputField">
+                <div className="singUpInputField-Detail">
+                    <div className="singUpInputField-Detail-text">
+                        <CustomTypography type="body" body="이메일"/>
+                    </div>
+                    <InputField
+                        placeholder="example@inflab.com"
+                        onSearch={handleSearch}
+                        type="null"
+                    />
+                </div>
+                <div className="singUpInputField-Detail">
+                    <div className="singUpInputField-Detail-text">
+                        <CustomTypography
+                            type="body"
+                            body="비밀번호"
+                        />
+                    </div>
+
+                    <InputField
+                        placeholder="********"
+                        onSearch={handleSearch}
+                        type="null"
+                    />
+
+
+
+                </div>
+                <div className="singUpInputField-Detail">
+                    <div className="singUpInputField-Detail-text">
+                        <CustomTypography
+                            type="body"
+                            body="비밀번호 확인"
+                        />
+                    </div>
+                    <InputField
+                        placeholder="********"
+                        onSearch={handleSearch}
+                        type="null"
+                    />
+                </div>
+
+                <SocialSingUpButton
+                    text="가입하기"
+                    onClick={handleSignUp}
+                />
             </div>
 
             <div className="singUpTemplates-line">

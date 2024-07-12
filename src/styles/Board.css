@@ -3,7 +3,7 @@
     text-align: center;
     padding: 38px 64px;
     max-width: 416px;
-    min-width: 320px;
+    min-width: 415px;
     border-radius: 4px;
     background-color: #ffffff;
     line-height: 2;
@@ -60,6 +60,12 @@
 .tag-box > div {
     flex-wrap: wrap;
     margin-top: 0.5rem;
+}
+.comment > button.css-da10o {
+    position: absolute;
+    top: 30px;
+    right: 11px;
+    background-color: #f8f9fa;
 }
 
 /* 게시글 목록 부분 */

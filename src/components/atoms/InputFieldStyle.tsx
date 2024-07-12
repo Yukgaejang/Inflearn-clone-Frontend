@@ -2,13 +2,13 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
 //입력창 스타일
-export const Container = styled.div<{ type: 'search' | 'TagSearch' | 'comment' }>`
+export const Container = styled.div<{ type: 'search' | 'TagSearch' | 'comment' | 'null' }>`
     display: flex;
     align-items: center;
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 4px;
-    width: 100%;
+    width: 95%;
     height: 48px;
 
 `;

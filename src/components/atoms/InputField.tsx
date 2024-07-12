@@ -5,34 +5,14 @@ import { IoSearchOutline } from 'react-icons/io5';
 import { GoHash } from 'react-icons/go';
 import { FaRegCommentDots } from 'react-icons/fa';
 
-
-/* 사용방법
- placeholder="입력창 메시지 작성"
- type="타입선택"
- (Search - 검색창, TageSearch - 태그검색창, comment - 댓글 입력창)
-
- - 예시
-    <InputField   placeholder="궁금한 질문을 검색해보세요!"
-                         onSearch={handleSearch}
-                           type="search"
-     ></InputField>
-     <InputField   placeholder="태그로 검색해보세요!"
-                  onSearch={handleSearch}
-                  type="TagSearch"
-     ></InputField>
-     <InputField   placeholder="사용자님 답변을 작성해보세요."
-                  onSearch={handleSearch}
-                  type="comment"
-     ></InputField>
- */
-
 interface SearchInputProps {
     placeholder: string;
     onSearch: (query: string) => void;
-    type: 'search' | 'TagSearch' | 'comment';
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    type: 'search' | 'TagSearch' | 'comment' | 'null';
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({ placeholder, onSearch, type }) => {
+const InputField: React.FC<SearchInputProps> = ({ placeholder, onSearch, type, onChange }) => {
     const [query, setQuery] = React.useState('');
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,8 +20,9 @@ const SearchInput: React.FC<SearchInputProps> = ({ placeholder, onSearch, type }
     };
 
     const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') { //엔터로 검색
+        if (e.key === 'Enter') {
             onSearch(query);
+            setQuery('');
         }
     };
 
@@ -58,6 +39,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ placeholder, onSearch, type }
             break;
         default:
             icon = null;
+            break;
     }
 
     return (
@@ -74,5 +56,4 @@ const SearchInput: React.FC<SearchInputProps> = ({ placeholder, onSearch, type }
     );
 };
 
-export default SearchInput;
-
+export default InputField;
